@@ -1,12 +1,42 @@
 #include <iostream>
-#include <vector>
-#include <array>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
 
-void adversaire (string& BOT, int& scoreB)
+void resultat(int& scoreB, int& scoreJ)
+{
+    if (scoreB == scoreJ) 
+    {
+        cout << "egalite" << endl;
+    }
+    else if (( scoreB == 1) && ( scoreJ == 2))
+    {
+        cout << "vous avez gagner" << endl;
+    }
+    else if (( scoreB == 2 ) && ( scoreJ == 3))
+    {
+        cout << "vous avez gagner" << endl;
+    }
+    else if (( scoreB == 3) && ( scoreJ == 1))
+    {
+        cout << "vous avez gagner" << endl;
+    }
+    else if (( scoreJ == 1) && ( scoreB == 2))
+    {
+        cout << "vous avez perdu" << endl;
+    }
+    else if (( scoreJ == 2 ) && ( scoreB == 3))
+    {
+        cout << "vous avez perdu" << endl;
+    }
+    else if (( scoreJ == 3) && ( scoreB == 1))
+    {
+        cout << "vous avez perdu" << endl;
+    }
+}
+
+void adversaire (string& BOT, int& scoreB) //Fonction qui permet que le BOT choisi entre la pierre, le ciseau et la feuille
 {
     srand ((int)time(0));
     
@@ -27,7 +57,7 @@ void adversaire (string& BOT, int& scoreB)
 
 }
 
-void Player (string& joueur, int& scoreJ )
+void Player (string& joueur, int& scoreJ ) //Fonction qui permet au joueur de choisi entre la pierre, le ciseau et la feuille
 {
     cout << "Entrer se que vous voulez jouer : ";
     cin >> joueur;
@@ -46,7 +76,7 @@ void Player (string& joueur, int& scoreJ )
     }
 }
 
-void partie()
+void partie() //Fonction qui gère tout la partie de jeux
 {
     string BOT,joueur;
     int scoreJ, scoreB;
@@ -62,6 +92,8 @@ void partie()
     cout << scoreJ << endl;
     cout << BOT << endl;
     cout << scoreB << endl;
+
+    resultat(scoreB, scoreJ);
 }
 
 int main()
@@ -72,7 +104,7 @@ int main()
     {
         partie();
 
-        cout << "Voulez vous rejouer ?" << endl;
+        cout << "Voulez vous rejouer (oui/non) ?" << endl;
         cin >> rejouer;
     }
 }
